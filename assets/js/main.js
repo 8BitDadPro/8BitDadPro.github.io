@@ -1,4 +1,4 @@
-// Helper: simple Markdown-to-HTML for headers, paragraphs, bold, and italics
+// Simple Markdown renderer (basic support for headers, bold, italics, line breaks)
 function renderMarkdown(mdText) {
     let html = mdText
         .replace(/^### (.*$)/gim, "<h3>$1</h3>")
@@ -6,38 +6,25 @@ function renderMarkdown(mdText) {
         .replace(/^# (.*$)/gim, "<h1>$1</h1>")
         .replace(/\*\*(.*?)\*\*/gim, "<b>$1</b>")
         .replace(/\*(.*?)\*/gim, "<i>$1</i>")
-        .replace(/\n$/gim, "<br/>")
         .replace(/\n\n+/g, "</p><p>")
-        .replace(/^(?!<h\d>|<ul>|<ol>)/gim, "<p>"); // naive paragraph
-    return html;
+        .replace(/\n/g, "<br/>");
+    return "<p>" + html + "</p>";
 }
 
+// Render post list on homepage with links to post.html pages
 function renderPostList(posts) {
     const container = document.getElementById("posts");
     container.innerHTML = "";
-    posts.forEach((post, idx) => {
-        // Post preview container
+    posts.forEach((post) => {
         const item = document.createElement("div");
         item.className = "post-preview";
-        // Main preview
         item.innerHTML = `
-      <h2 class="post-title" style="cursor:pointer;" data-idx="${idx}">${post.title}</h2>
-      <p><em>${post.date}</em> &mdash; Tags: ${post.tags.join(", ")}</p>
+      <h2 class="post-title"><a href="post.html?slug=${post.slug}">${post.title}</a></h2>
+      <p class="post-meta"><em>${post.date}</em> &mdash; Tags: ${post.tags.join(", ")}</p>
       <p>${post.excerpt}</p>
-      <div class="full-post" style="display:none; margin-top:1em;">${renderMarkdown(post.content)}</div>
       <hr>
     `;
         container.appendChild(item);
-    });
-
-    // Add click handler to toggle full post view
-    container.querySelectorAll(".post-title").forEach((titleEl) => {
-        titleEl.addEventListener("click", function () {
-            const idx = +this.dataset.idx;
-            const fullPost = this.parentNode.querySelector(".full-post");
-            fullPost.style.display =
-                fullPost.style.display === "none" ? "block" : "none";
-        });
     });
 }
 
@@ -47,21 +34,24 @@ function loadPosts() {
         .then((fileList) =>
             Promise.all(
                 fileList.map((filename) =>
-                    fetch("posts/" + filename).then((f) => f.json()),
+                    fetch("posts/" + filename).then((r) => r.json()),
                 ),
             ),
         )
         .then((posts) => {
-            // Order by date descending
             posts.sort((a, b) => b.date.localeCompare(a.date));
             renderPostList(posts);
         })
         .catch((err) => {
-            document.getElementById("posts").innerHTML =
-                "Failed to load posts. Double-check the posts folder and index.json.<br>" +
-                err;
+            const container = document.getElementById("posts");
+            if (container) {
+                container.innerHTML =
+                    "Failed to load posts. Double-check the posts folder and index.json.<br>" +
+                    err;
+            } else {
+                console.error("Posts container not found in DOM.");
+            }
         });
 }
 
-// Initialize when page loads
 window.addEventListener("DOMContentLoaded", loadPosts);
