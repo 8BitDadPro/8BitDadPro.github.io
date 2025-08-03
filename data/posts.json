@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Welcome to My Blog",
+      "slug": "welcome-to-my-blog",
+      "date": "2024-01-15",
+      "excerpt": "This is my first blog post. Welcome to my simple, static blog built with HTML, CSS, and JavaScript.",
+      "content": "# Welcome to My Blog\n\nThis is my first blog post on this simple, static blog. This blog is built using only HTML, CSS, and JavaScript, making it perfect for hosting on GitHub Pages.\n\n## Features\n\n- **Simple Management**: Add new posts by editing a JSON file\n- **GitHub Integration**: Easy to update using GitHub Desktop\n- **Responsive Design**: Works great on all devices\n- **Fast Loading**: Static files mean quick page loads\n\nI'm excited to share more content with you soon!",
+      "tags": ["welcome", "blog", "introduction"]
+    },
+    {
+      "id": 2,
+      "title": "How to Build a Static Blog",
+      "slug": "how-to-build-static-blog",
+      "date": "2024-01-20",
+      "excerpt": "Learn how to create your own static blog using HTML, CSS, and JavaScript that you can easily host on GitHub Pages.",
+      "content": "# How to Build a Static Blog\n\nBuilding a static blog has many advantages over traditional dynamic blogs. Here's why you should consider it:\n\n## Benefits of Static Blogs\n\n1. **Fast Performance**: No database queries or server processing\n2. **Better Security**: No server-side vulnerabilities\n3. **Free Hosting**: GitHub Pages hosts static sites for free\n4. **Version Control**: Your entire blog is version controlled\n\n## Technologies Used\n\n- **HTML**: Structure and content\n- **CSS**: Styling and responsive design\n- **JavaScript**: Dynamic functionality and post loading\n- **JSON**: Data storage for blog posts\n\nThis approach gives you full control over your blog while keeping it simple and maintainable.",
+      "tags": ["tutorial", "web development", "static sites"]
+    },
+    {
+      "id": 3,
+      "title": "Getting Started with GitHub Pages",
+      "slug": "getting-started-github-pages",
+      "date": "2024-01-25",
+      "excerpt": "A beginner's guide to hosting your static website on GitHub Pages for free.",
+      "content": "# Getting Started with GitHub Pages\n\nGitHub Pages is an excellent way to host static websites for free. Here's how to get started:\n\n## Step 1: Create a Repository\n\n1. Go to GitHub and create a new repository\n2. Name it `your-username.github.io` for a personal site\n3. Make sure it's public\n\n## Step 2: Add Your Files\n\n1. Upload your HTML, CSS, and JavaScript files\n2. Make sure you have an `index.html` file in the root\n3. Commit your changes\n\n## Step 3: Enable GitHub Pages\n\n1. Go to your repository settings\n2. Scroll down to GitHub Pages section\n3. Select your source branch (usually `main`)\n\nThat's it! Your site will be available at `https://your-username.github.io`",
+      "tags": ["github", "hosting", "tutorial"]
+    }
+  ]
+}

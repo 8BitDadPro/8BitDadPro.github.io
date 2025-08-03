@@ -1,7 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Blog</title>
+    <meta name="description" content="A simple blog built with HTML, CSS, and JavaScript">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <h1 class="nav-title">My Simple Blog</h1>
+                <div class="nav-links">
+                    <button class="btn btn-outline" id="home-btn">Home</button>
+                    <button class="btn btn-outline" id="admin-btn">Admin</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Homepage View -->
+        <div id="home-view" class="view active">
+            <!-- Search and Filter Section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search posts...">
+                    <div class="filter-tags" id="filter-tags"></div>
+                </div>
+            </div>
+
+            <!-- Posts List -->
+            <div class="posts-grid" id="posts-grid">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
+        </div>
+
+        <!-- Post Detail View -->
+        <div id="post-view" class="view">
+            <button class="btn btn-outline back-btn" id="back-btn">← Back to Posts</button>
+            <article class="post-detail" id="post-detail">
+                <!-- Post content will be dynamically inserted here -->
+            </article>
+        </div>
+
+        <!-- Admin View -->
+        <div id="admin-view" class="view">
+            <div class="admin-container">
+                <h2>Add New Post</h2>
+                <p class="admin-note">Use this form to generate the JSON for a new post. Copy the generated JSON and add it to your data/posts.json file.</p>
+
+                <form id="admin-form" class="admin-form">
+                    <div class="form-group">
+                        <label for="post-title">Post Title</label>
+                        <input type="text" id="post-title" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-excerpt">Excerpt</label>
+                        <textarea id="post-excerpt" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-content">Content (Markdown supported)</label>
+                        <textarea id="post-content" class="form-control" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-tags">Tags (comma separated)</label>
+                        <input type="text" id="post-tags" class="form-control" placeholder="web development, tutorial, javascript">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Generate Post JSON</button>
+                </form>
+
+                <div id="generated-json" class="generated-json" style="display: none;">
+                    <h3>Generated JSON</h3>
+                    <p>Copy this JSON and add it to your data/posts.json file:</p>
+                    <pre id="json-output"></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Simple Blog. Built with HTML, CSS, and JavaScript.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
