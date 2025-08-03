@@ -1,9 +1,0 @@
-{
-    "id": "test-post",
-    "title": "My First Post",
-    "slug": "test-post",
-    "date": "2024-08-01",
-    "excerpt": "This is my first post.",
-    "content": "# Hello\nThis is content.",
-    "tags": ["intro"]
-}
