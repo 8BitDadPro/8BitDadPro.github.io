@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Tyler Hand - Writing</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo" tabindex="0">Tyler Hand</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="writing.html" aria-current="page">Poetry</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" role="banner">
+                <p>An endless, living scroll of my reflections</p>
+            </section>
+
+            <section id="poems" aria-labelledby="poems-heading">
+                <h2 id="poems-heading" class="visually-hidden"></h2>
+                <div id="more-poems"></div>
+                <div id="sentinel" aria-hidden="true"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                Send me an email:
+                <a href="mailto:KingPen@OpinionInk.com">
+                    KingPen@OpinionInk.com
+                </a>
+            </p>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+
+        <script src="poem_list.js"></script>
+
+        <script>
+            let nextPoemIndex = 0;
+            const poemsPerBatch = 2;
+
+            async function loadPoemsBatch() {
+                const container = document.getElementById("more-poems");
+                for (
+                    let i = 0;
+                    i < poemsPerBatch && nextPoemIndex < poemFiles.length;
+                    i++
+                ) {
+                    const filePath = poemFiles[nextPoemIndex++];
+                    try {
+                        const response = await fetch(filePath);
+                        if (!response.ok)
+                            throw new Error(
+                                `Failed to load: ${response.statusText}`,
+                            );
+                        const text = await response.text();
+                        const [title, ...bodyLines] = text.split("\n");
+                        const poemArticle = document.createElement("article");
+                        poemArticle.className = "poem";
+                        poemArticle.tabIndex = 0;
+                        poemArticle.innerHTML = `
+            <h2>${title.trim()}</h2>
+            <p>${bodyLines.join("<br>").trim()}</p>
+          `;
+                        container.appendChild(poemArticle);
+                    } catch (err) {
+                        console.error(err);
+                    }
+                }
+            }
+
+            const sentinel = document.getElementById("sentinel");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    if (
+                        entries[0].isIntersecting &&
+                        nextPoemIndex < poemFiles.length
+                    ) {
+                        loadPoemsBatch();
+                    }
+                },
+                { rootMargin: "0px 0px 300px 0px" },
+            );
+
+            observer.observe(sentinel);
+            loadPoemsBatch();
+        </script>
+    </body>
+</html>

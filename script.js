@@ -1,5 +1,5 @@
 // Typing animation for name
-const nameStr = "Your Name";
+const nameStr = "Tyler G. Hand";
 let idx = 0;
 const typedName = document.getElementById("typed-name");
 function typeWriter() {

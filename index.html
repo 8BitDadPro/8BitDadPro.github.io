@@ -2,75 +2,81 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <title>Your Name - Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Tyler Hand - Portfolio</title>
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <header>
             <nav>
-                <div class="logo">Your Name</div>
+                <div class="logo" tabindex="0">Tyler Hand</div>
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="writing.html">Poetry</a></li>
                 </ul>
             </nav>
         </header>
 
-        <section class="hero">
-            <h1>Hello, I'm <span id="typed-name"></span></h1>
-            <p>Poetry is a part of me.</p>
-        </section>
+        <main>
+            <section class="hero" role="banner">
+                <h1>-- X --</h1>
+            </section>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Welcome to my portfolio! I'm a web developer with a love for
-                building beautiful and functional applications.
-            </p>
-        </section>
+            <section id="about" aria-labelledby="about-heading">
+                <h2 id="about-heading">About Me</h2>
+                <p>
+                    Welcome to my portfolio! I'm an aspiring poet who is in
+                    pursuit of interweaving the beauty of words with the rhythm
+                    of life, creating a harmonious blend of emotion and
+                    expression.
+                </p>
+            </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-list">
-                <div class="project">
-                    <h3>Project Title 1</h3>
-                    <p>Short description of project 1.</p>
-                    <a href="#" target="_blank">View Project</a>
+            <section id="projects" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Projects</h2>
+                <div class="project-list">
+                    <article class="project" tabindex="0">
+                        <h3>Project Title 1</h3>
+                        <p>
+                            Short description of project 1, emphasizing modern
+                            design and solid functionality.
+                        </p>
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                            >View Project</a
+                        >
+                    </article>
+                    <article class="project" tabindex="0">
+                        <h3>Project Title 2</h3>
+                        <p>
+                            Brief description of project 2 with focus on clean
+                            code and user experience.
+                        </p>
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                            >View Project</a
+                        >
+                    </article>
                 </div>
-                <div class="project">
-                    <h3>Project Title 2</h3>
-                    <p>Short description of project 2.</p>
-                    <a href="#" target="_blank">View Project</a>
-                </div>
-                <!-- Add more projects as needed -->
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <form id="contact-form">
-                <input type="text" id="name" placeholder="Your Name" required />
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Your Email"
-                    required
-                />
-                <textarea
-                    id="message"
-                    placeholder="Your Message"
-                    required
-                ></textarea>
-                <button type="submit">Send</button>
-                <div id="form-message"></div>
-            </form>
-        </section>
+            </section>
+        </main>
 
         <footer>
-            <p>&copy; 2025 Tyler Hand. All rights reserved.</p>
+            <p>
+                Send me an email:
+                <a href="mailto:KingPen@OpinionInk.com">
+                    KingPen@OpinionInk.com
+                </a>
+            </p>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
         </footer>
+
         <script src="script.js"></script>
     </body>
 </html>
